@@ -1,5 +1,10 @@
 # coding:utf-8
 import xadmin
+from xadmin import site
+from xadmin.views import ListAdminView
+from xadmin.views import ModelFormAdminView
+
+from xplugin.mptree import MPTTListPlugin, MPTTFormPlugin
 
 
 class GolbeSetting(object):
@@ -8,4 +13,7 @@ class GolbeSetting(object):
     base_template = 'faq_base_site.html'
 
 
-xadmin.site.register(xadmin.views.CommAdminView, GolbeSetting)
+site.register(xadmin.views.CommAdminView, GolbeSetting)
+
+site.register_plugin(MPTTListPlugin, ListAdminView)
+site.register_plugin(MPTTFormPlugin, ModelFormAdminView)

@@ -1,8 +1,6 @@
-from xadmin.sites import site
-from xadmin.views import BaseAdminPlugin, ListAdminView, ModelFormAdminView
-
-from mptt.models import MPTTModel
 from mptt.forms import MPTTAdminForm, TreeNodeChoiceField
+from mptt.models import MPTTModel
+from xadmin.views import BaseAdminPlugin
 
 
 class MPTTListPlugin(BaseAdminPlugin):
@@ -27,9 +25,6 @@ class MPTTListPlugin(BaseAdminPlugin):
         return media
 
 
-site.register_plugin(MPTTListPlugin, ListAdminView)
-
-
 class MPTTFormPlugin(BaseAdminPlugin):
     def init_request(self, *args, **kwargs):
         result = self.model and issubclass(self.model, MPTTModel)
@@ -45,5 +40,3 @@ class MPTTFormPlugin(BaseAdminPlugin):
             attrs.update(dict(form_class=TreeNodeChoiceField, queryset=db_field.rel.to.objects.all(), required=False))
         return attrs
 
-
-site.register_plugin(MPTTFormPlugin, ModelFormAdminView)
