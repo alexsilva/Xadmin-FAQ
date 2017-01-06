@@ -4,8 +4,8 @@ from xadmin.views import BaseAdminPlugin, ListAdminView, ModelFormAdminView
 from mptt.models import MPTTModel
 from mptt.forms import MPTTAdminForm, TreeNodeChoiceField
 
-class MPTTListPlugin(BaseAdminPlugin):
 
+class MPTTListPlugin(BaseAdminPlugin):
     def init_request(self, *args, **kwargs):
         return self.model and issubclass(self.model, MPTTModel)
 
@@ -23,13 +23,14 @@ class MPTTListPlugin(BaseAdminPlugin):
 
     # Media
     def get_media(self, media):
-        #media.add_css({'screen': [self.static('xadmin/css/aggregation.css'),]})
+        # media.add_css({'screen': [self.static('xadmin/css/aggregation.css'),]})
         return media
+
 
 site.register_plugin(MPTTListPlugin, ListAdminView)
 
-class MPTTFormPlugin(BaseAdminPlugin):
 
+class MPTTFormPlugin(BaseAdminPlugin):
     def init_request(self, *args, **kwargs):
         result = self.model and issubclass(self.model, MPTTModel)
         if result:
@@ -43,5 +44,6 @@ class MPTTFormPlugin(BaseAdminPlugin):
                 and not db_field.name in self.raw_id_fields:
             attrs.update(dict(form_class=TreeNodeChoiceField, queryset=db_field.rel.to.objects.all(), required=False))
         return attrs
+
 
 site.register_plugin(MPTTFormPlugin, ModelFormAdminView)
