@@ -1,4 +1,4 @@
-from distutils.core import setup
+from setuptools import setup
 import os
 
 basedir = os.path.dirname(os.path.basename(__file__))
@@ -24,5 +24,5 @@ setup(
     author='alex',
     author_email='',
     description='Xadmin plugin editing templates on the tree',
-    install_reqs=install_reqs
+    install_requires=install_reqs
 )
