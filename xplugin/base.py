@@ -27,7 +27,7 @@ xadmin.site.register_plugin(ListDetailPlugin, ListAdminView)
 
 class AnonymousUserPlugin(BaseAdminPlugin):
     def init_request(self, *args, **kwargs):
-        if not self.request.user.id:
+        if not self.request.user.pk:
             user = authenticate(username='AnonymousUser', password='admin')
             login(self.request, user)
 
