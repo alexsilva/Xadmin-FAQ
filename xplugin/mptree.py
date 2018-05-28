@@ -39,4 +39,3 @@ class MPTTFormPlugin(BaseAdminPlugin):
                 and not db_field.name in self.raw_id_fields:
             attrs.update(dict(form_class=TreeNodeChoiceField, queryset=db_field.rel.to.objects.all(), required=False))
         return attrs
-

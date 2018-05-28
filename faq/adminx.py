@@ -1,16 +1,19 @@
-#coding:utf-8
+# coding:utf-8
 import xadmin
-from xadmin.layout import Fieldset, Field,Row
+from xadmin.layout import Fieldset, Row
+
 from models import *
 
+
 class FaqAdmin(object):
-    def name(self,instance):
+    def name(self, instance):
         if instance.parent:
-            n = '&nbsp;'*6 + instance.title
-            return '<a href="%s">%s</a>' % (self.get_model_url(Faq,'detail',instance.pk),n)
+            n = '&nbsp;' * 6 + instance.title
+            return '<a href="%s">%s</a>' % (self.get_model_url(Faq, 'detail', instance.pk), n)
         if self.user.is_superuser:
-            return '<a href="%s">%s</a>' % (self.get_model_url(Faq,'detail',instance.pk),instance.title)
+            return '<a href="%s">%s</a>' % (self.get_model_url(Faq, 'detail', instance.pk), instance.title)
         return instance.title
+
     name.short_description = '&nbsp;'
     name.allow_tags = True
     name.allow_export = False
@@ -24,22 +27,24 @@ class FaqAdmin(object):
     list_display = ('name',)
     list_display_links = ('title',)
     search_fields = ('title',)
-    list_filter = ('title','parent',)
+    list_filter = ('title', 'parent',)
     relfield_style = 'fk-ajax'
     form_layout = (
         Fieldset('基本信息',
-            Row('title','parent'),
-            Row('num','author'),
-        ),
+                 Row('title', 'parent'),
+                 Row('num', 'author'),
+                 ),
         Fieldset('内容',
-            'content'
-        )
+                 'content'
+                 )
     )
-    style_fields = {'content': 'ueditor',}
+    style_fields = {'content': 'ueditor', }
 
     def get_list_queryset(self):
-        qs = super(FaqAdmin,self).get_list_queryset().order_by('num')
+        qs = super(FaqAdmin, self).get_list_queryset().order_by('num')
         if self.request.is_ajax():
-           return qs.filter(parent__isnull = True)
+            return qs.filter(parent__isnull=True)
         return qs
-xadmin.site.register(Faq,FaqAdmin)
+
+
+xadmin.site.register(Faq, FaqAdmin)

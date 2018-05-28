@@ -1,12 +1,10 @@
 # coding:utf-8
 # author 'sai'
 import xadmin
-from xadmin import widgets
-from xadmin.views import LoginView, BaseAdminView, BaseAdminPlugin, ModelFormAdminView, \
-    DetailAdminView, ModelAdminView, ListAdminView, CreateAdminView, UpdateAdminView
-from django.contrib.auth import login, authenticate
-from django.contrib.auth import get_user_model
 from django.contrib.auth import REDIRECT_FIELD_NAME
+from django.contrib.auth import get_user_model
+from django.contrib.auth import login, authenticate
+from xadmin.views import LoginView, BaseAdminView, BaseAdminPlugin, ListAdminView
 
 User = get_user_model()
 

@@ -1,5 +1,5 @@
-from django.conf.urls import patterns, include, url
 import xadmin
+from django.conf.urls import patterns, include, url
 
 xadmin.autodiscover()
 

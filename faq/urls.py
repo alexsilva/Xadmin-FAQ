@@ -1,6 +1,5 @@
 # -*- coding: UTF-8 -*-
-from django.conf.urls import patterns, include, url
-from django.contrib.auth.decorators import login_required
+from django.conf.urls import patterns, url
 
 urlpatterns = patterns('',
     #设置文章相关URL
