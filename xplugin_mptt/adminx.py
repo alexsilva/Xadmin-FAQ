@@ -5,7 +5,7 @@ from xadmin import site
 from xadmin.views import ListAdminView
 from xadmin.views import ModelFormAdminView
 
-from xplugin.mptree import MPTTListPlugin, MPTTFormPlugin
+from .mptree import MPTTListPlugin, MPTTFormPlugin
 
 
 class GolbeSetting(object):

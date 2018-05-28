@@ -7,7 +7,7 @@ basedir = os.path.dirname(os.path.basename(__file__))
 setup(
     name='xadmin-mptt-plugin',
     version='1.0',
-    packages=['xplugin'],
+    packages=['xplugin_mptt'],
     url='https://github.com/alexsilva/xadmin-mppt-plugin',
     license='MIT',
     author='alex',
