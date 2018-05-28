@@ -16,7 +16,7 @@ setup(
     name='xadmin-mptt-plugin',
     version='1.0',
     packages=['xplugin'],
-    url='https://github.com/alexsilva/Xadmin-FAQ',
+    url='https://github.com/alexsilva/xadmin-mppt-plugin',
     license='MIT',
     author='alex',
     author_email='',
